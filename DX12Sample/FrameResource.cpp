@@ -7,8 +7,8 @@ FrameResource::FrameResource(ID3D12Device* device, UINT passCount, UINT objectCo
 		IID_PPV_ARGS(CmdListAlloc.GetAddressOf())));
 
 	PassCB = make_unique<UploadBuffer<PassConstants>>(device, passCount, true);
-	ObjectCB = make_unique<UploadBuffer<ObjectConstants>>(device, objectCount, true);
-	MaterialCB = make_unique<UploadBuffer<MaterialConstants>>(device, materialCount, true);
+	ObjectBuffer = make_unique<UploadBuffer<ObjectData>>(device, objectCount, false);
+	MaterialBuffer = make_unique<UploadBuffer<MaterialData>>(device, materialCount, false);
 }
 
 FrameResource::~FrameResource()

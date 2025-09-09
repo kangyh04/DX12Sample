@@ -4,10 +4,14 @@
 #include "MathHelper.h"
 #include "UploadBuffer.h"
 
-struct ObjectConstants
+struct ObjectData
 {
 	XMFLOAT4X4 World = MathHelper::Identity4x4();
 	XMFLOAT4X4 TexTransform = MathHelper::Identity4x4();
+	UINT MaterialIndex;
+	UINT Pad0;
+	UINT Pad1;
+	UINT Pad2;
 };
 
 struct PassConstants
@@ -37,13 +41,26 @@ struct PassConstants
 	Light Lights[MaxLights];
 };
 
+struct MaterialData
+{
+	XMFLOAT4 DiffuseAlbedo = { 1.0f, 1.0f, 1.0f, 1.0f };
+	XMFLOAT3 FresnelR0 = { 0.01f, 0.01f, 0.01f };
+	float Roughness = 0.25;
+	XMFLOAT4X4 MatTransform = MathHelper::Identity4x4();
+
+	UINT DiffuseMapIndex = 0;
+	UINT Pad0;
+	UINT Pad1;
+	UINT Pad2;
+};
+
 struct Vertex
 {
 	Vertex() = default;
 	Vertex(float x, float y, float z,
 		float nx, float ny, float nz,
 		float u, float v)
-		: Pos(x, y, z), Normal(nx, ny, nz), TexC(u, v) 
+		: Pos(x, y, z), Normal(nx, ny, nz), TexC(u, v)
 	{
 	}
 	XMFLOAT3 Pos;
@@ -72,8 +89,8 @@ struct FrameResource
 	ComPtr<ID3D12CommandAllocator> CmdListAlloc;
 
 	unique_ptr<UploadBuffer<PassConstants>> PassCB = nullptr;
-	unique_ptr<UploadBuffer<ObjectConstants>> ObjectCB = nullptr;
-	unique_ptr<UploadBuffer<MaterialConstants>> MaterialCB = nullptr;
+	unique_ptr<UploadBuffer<ObjectData>> ObjectBuffer = nullptr;
+	unique_ptr<UploadBuffer<MaterialData>> MaterialBuffer = nullptr;
 
 	UINT64 Fence = 0;
 };
