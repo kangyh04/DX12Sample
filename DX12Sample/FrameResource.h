@@ -81,7 +81,7 @@ struct PointVertex
 
 struct FrameResource
 {
-	FrameResource(ID3D12Device* device, UINT passCount, UINT objectCount, UINT materialCount);
+	FrameResource(ID3D12Device* device, UINT passCount = 10, UINT objectCount = 100000, UINT materialCount = 5000);
 	FrameResource(const FrameResource& rhs) = delete;
 	FrameResource& operator=(const FrameResource& rhs) = delete;
 	~FrameResource();

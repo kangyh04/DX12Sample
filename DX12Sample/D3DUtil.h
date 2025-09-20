@@ -114,15 +114,6 @@ struct Light
 
 #define MaxLights 16
 
-struct Texture
-{
-	string Name;
-	wstring Filename;
-
-	ComPtr<ID3D12Resource> Resource = nullptr;
-	ComPtr<ID3D12Resource> UploadHeap = nullptr;
-};
-
 inline void CheckD3D12Message(ID3D12Device* device, const char* context)
 {
 #ifdef _DEBUG

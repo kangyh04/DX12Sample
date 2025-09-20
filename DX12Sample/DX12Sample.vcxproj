@@ -102,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,6 +126,7 @@
   <ItemGroup>
     <ClInclude Include="BaseApp.h" />
     <ClInclude Include="D3DApp.h" />
+    <ClInclude Include="D3DDevice.h" />
     <ClInclude Include="D3DUtil.h" />
     <ClInclude Include="D3DX12.h" />
     <ClInclude Include="DDSTextureLoader.h" />
@@ -132,7 +134,9 @@
     <ClInclude Include="FrameWave.h" />
     <ClInclude Include="Func.h" />
     <ClInclude Include="GeometryGenerator.h" />
+    <ClInclude Include="GraphicsDevice.h" />
     <ClInclude Include="IComponent.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="LandUtility.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathHelper.h" />
@@ -142,19 +146,23 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderItem.h" />
     <ClInclude Include="SampleApp.h" />
+    <ClInclude Include="Singleton.h" />
     <ClInclude Include="StaticSamplers.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="UploadBuffer.h" />
     <ClInclude Include="Waves.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseApp.cpp" />
     <ClCompile Include="D3DApp.cpp" />
+    <ClCompile Include="D3DDevice.cpp" />
     <ClCompile Include="D3DUtil.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="FrameResource.cpp" />
     <ClCompile Include="GeometryGenerator.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -162,6 +170,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Transform.h" />
     <ClCompile Include="Waves.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

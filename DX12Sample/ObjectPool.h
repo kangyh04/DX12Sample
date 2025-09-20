@@ -105,6 +105,16 @@ public:
 		popedItem.erase(it, popedItem.end());
 	}
 
+	void Peek()
+	{
+
+	}
+
+	void Dispose()
+	{
+
+	}
+
 private:
 	unordered_map<TKey, unique_ptr<PooledObjectTemplate<TItem>>> templates;
 	unordered_map<TKey, vector<unique_ptr<TItem>>> allItems;

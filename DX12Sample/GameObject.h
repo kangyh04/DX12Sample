@@ -49,8 +49,13 @@ public:
 private:
 	void SetChildren(GameObject* child);
 	void RemoveFromChildren(GameObject* child);
+	void SetId(UINT newId)
+	{
+		id = newId;
+	}
 
 private:
+	UINT id;
 	string name;
 	Transform transform;
 	GameObject* parent;

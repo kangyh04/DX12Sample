@@ -57,7 +57,30 @@ void GameObject::AddComponent()
 template<typename T>
 GameObject* GameObject::CreateObject(string name, World* world, GameObject* parent)
 {
-	if (gameObjectPool.)
+	if typeId = typeid(T).hash_code();
+	if (!gameObjectPool.IsKeyRegisted(typeId))
+	{
+		Action<GameObject*, int> configurator([](GameObject* newObj, int count)
+			{
+				newObj->SetId(count);
+			});
+		Action<GameObject*> activator([](GameObject* newObj)
+			{
+				newObj->Initialize();
+			});
+		Action<GameObject*> deactivator([](GameObject* newObj)
+			{
+
+			});
+
+		gameObjectPool.Regist(
+			typeId,
+			configurator,
+			activator,
+			deactivator);
+	}
+
+	return gameObjectPool.Pop(typeId);
 }
 
 void GameObject::SetChildren(GameObject* child)
